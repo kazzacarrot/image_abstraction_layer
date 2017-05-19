@@ -1,33 +1,28 @@
-var mongo = require('mongodb').MongoClient
-var path = require("path")
-var util = require("util")
-let request  = require("request");
 var url = process.env.MONGOLAB_URI;
 var client_id = process.env.IMGUR_CLIENT_ID;
-var express = require("express")
+
+var mongo = require('mongodb').MongoClient;
+var path = require("path");
+var util = require("util");
+var request  = require("request");
+var express = require("express");
 var app = express();
-var port = process.env.PORT || 8080
-var host = "https://fcc-image-abstraction-layer-karen.herokuapp.com/" ;
+var port = process.env.PORT || 8080;
 var imgur_search_url = "https://api.imgur.com/3/gallery/search/viral/all/%s?q=";
-var pug = require("pug")
-if (process.env.NODE_ENV == "test"){
-    var host = "http://localhost:" + port + "/";
-}
+var pug = require("pug");
 var col = "imageAbstractionLayer";
 
-app.use(require('stylus').middleware(__dirname + '/public'));
-app.use(express.static(__dirname + '/public'));
-
-    
 module.exports = app;
 
 app.listen(port, function(){
     console.log("listening on port %s", port);
 })
 
-app.set('view engine', 'pug')
+app.use(require('stylus').middleware(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
-app.set('views', path.join(__dirname, 'templates'))
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'templates'));
 
 
 app.get("/api/recent", function(req, res){
@@ -47,7 +42,7 @@ app.get("/api/recent", function(req, res){
             }).limit(20).toArray( 
                 function(err, docs){
                     res.send(docs);
-                    db.close()
+                    db.close();
                 })
         }
     })
@@ -94,7 +89,7 @@ app.get("/api/imagesearch/:keyphrase", function(req, res){
                     term: keyphrase
                 }, 
                 function(data){
-                    db.close()
+                    db.close();
                 })
     })
 })
@@ -105,8 +100,6 @@ app.get("/api/imagesearch/", function(req, res){
 
 })
 
-
-
 app.get("/", function(req, res){
-        res.render("index.pug", {date: new Date().toDateString()})
+        res.render("index.pug");
 })
