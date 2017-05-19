@@ -1,0 +1,29 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "Build a full stack javascript app that allows you tot search for images like ... host/api/imagesearch/<keywords>?offset=<however many> and see the recent history of searches on host/api/latest/imagesearch",
+  "scripts": {
+    "test": "mocha --timeout 10000",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazzacarrot/image_abstraction_layer.git"
+  },
+  "author": "Karen McCulloch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kazzacarrot/image_abstraction_layer/issues"
+  },
+  "homepage": "https://github.com/kazzacarrot/image_abstraction_layer#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongodb": "^2.2.26"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.4.1",
+    "request": "^2.81.0"
+  }
+}
