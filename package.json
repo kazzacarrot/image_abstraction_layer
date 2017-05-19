@@ -18,7 +18,8 @@
   "homepage": "https://github.com/kazzacarrot/image_abstraction_layer#readme",
   "dependencies": {
     "express": "^4.15.3",
-    "mongodb": "^2.2.26"
+    "mongodb": "^2.2.26",
+    "pug": "^2.0.0-rc.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
