@@ -1,0 +1,60 @@
+doctype html
+html
+  head
+    title image search
+    link(href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada", rel="stylesheet")   
+    link(rel="stylesheet", type="text/css", href="/main.css")
+         
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script.
+      $(document).ready(function(){
+        $.ajax({
+          type: "GET",
+          url: "/api/recent",
+          success: function(data){
+            var p = $("<p></p>");
+            data.forEach(function(o, i){
+                a = p.clone();
+                a.text(o.term + " @ " + o.timestamp) ;
+                $("div#recent").append(a);
+            })
+          },
+          dataType: 'json'
+        });
+      })()
+    script.
+       function search(){ $.ajax({
+          type: "GET",
+          url: "/api/imagesearch/" + $("#keyphrase").val(),
+          success: function(data){
+            var p = $("<img></img>");
+            $("div#results").html(" ");
+
+            data.forEach(function(o, i){
+                a = p.clone();
+                a.attr("src", o.url);
+                a.attr("alt", o.alt);
+                a.attr("title", o.alt);
+                $("div#results").append(a);
+            })
+          },
+          dataType: 'json'
+        });
+        }
+body
+
+
+  h1 Image Search Abstraction Layer
+
+  div
+    h2 Recent Searches 
+    #recent
+
+  div
+    h2 Make Search
+    input#keyphrase
+    button(onclick="search()") Submit
+    #results
+
+
+  

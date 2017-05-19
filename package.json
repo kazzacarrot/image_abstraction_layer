@@ -20,7 +20,8 @@
     "express": "^4.15.3",
     "mongodb": "^2.2.26",
     "pug": "^2.0.0-rc.1",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "stylus": "^0.54.5"
   },
   "devDependencies": {
     "chai": "^3.5.0",
